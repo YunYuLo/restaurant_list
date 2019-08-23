@@ -19,11 +19,10 @@ app.get('/restaurants/:id', (req, res) => {
 })
 
 app.get('/search', (req, res) => {
-  const regex = new RegExp(req.query.keyword, 'ui')
-  const restaurant =
-    restaurantList.results.filter(restaurant => restaurant.name_en.match(regex))
-    && restaurantList.results.filter(restaurant => restaurant.name.match(regex))
-    && restaurantList.results.filter(restaurant => restaurant.category.match(regex))
+  const restaurant = restaurantList.results.filter(restaurant => {
+    const regex = new RegExp(req.query.keyword, 'gi')
+    return restaurant.name_en.match(regex) || restaurant.name.match(regex) || restaurant.category.match(regex)
+  })
 
   res.render('index', { restaurants: restaurant, keyword: req.query.keyword })
 })
