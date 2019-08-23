@@ -8,9 +8,8 @@
 
 ## Quick view
 
-![main page]()
-![index page]()
-![searching]()
+![main page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/main.png)
+![index page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/index.png)
 
 ## Environment set up
 - Node.js
