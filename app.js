@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/restaurants/:id', (req, res) => {
-  const restaurant = restaurantList.results.filter(restaurant => restaurant.id == req.params.id)
-  res.render('show', { restaurants: restaurant[0] })
+  const restaurant = restaurantList.results.find(restaurant => restaurant.id == req.params.id)
+  res.render('show', { restaurants: restaurant })
 })
 
 app.get('/search', (req, res) => {
@@ -23,7 +23,6 @@ app.get('/search', (req, res) => {
     const regex = new RegExp(req.query.keyword, 'gi')
     return restaurant.name_en.match(regex) || restaurant.name.match(regex) || restaurant.category.match(regex)
   })
-
   res.render('index', { restaurants: restaurant, keyword: req.query.keyword })
 })
 
