@@ -1,0 +1,84 @@
+<div class="container py-5">
+
+  <div class="row">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> 一起來添加餐廳口袋名單 </h5>
+          <hr>
+          <form method="POST" action="/restaurants">
+            <div class="form-group form-row">
+              <label for="name" class="col-md-3 col-form-label">
+                餐廳名稱 *
+              </label>
+              <div class="col-md-8">
+                <input type="name" name="name" class="form-control" id="name" placeholder="中文名稱" required>
+              </div>
+            </div>
+            <div class="form-group form-row">
+              <label for="name_en" class="col-md-3 col-form-label">
+                餐廳英文名稱
+              </label>
+              <div class="col-md-8">
+                <input type="name" name="name_en" class="form-control" id="name_en" placeholder="英文名稱">
+              </div>
+            </div>
+            <div class="form-group form-row">
+              <label for="category" class="col-md-3 col-form-label">
+                餐廳類別 *
+              </label>
+              <div class="col-md-8">
+                <input type="text" name="category" class="form-control" id="category" placeholder="日本料理、中式餐廳" required>
+              </div>
+            </div>
+            <div class="form-group form-row">
+              <label for="image" class="col-md-3 col-form-label">
+                餐廳照片
+              </label>
+              <div class="col-md-8">
+                <input type="text" name="image" class="form-control" id="image" placeholder="https://...../photo.jpg">
+              </div>
+            </div>
+            <div class="form-group form-row">
+              <label for="location" class="col-md-3 col-form-label">
+                餐廳地址 *
+              </label>
+              <div class="col-md-8">
+                <input type="text" name="location" class="form-control" id="location" placeholder="台北市中山區雙城街" required>
+              </div>
+            </div>
+            <div class="form-group form-row">
+              <label for="phone" class="col-md-3 col-form-label">
+                餐廳電話 *
+              </label>
+              <div class="col-md-8">
+                <input type="text" name="phone" class="form-control" id="phone" placeholder="02 7743 9999" required>
+              </div>
+            </div>
+            <div class="form-group form-row">
+              <label for="rating" class="col-md-3 col-form-label">
+                評分 *
+              </label>
+              <div class="col-md-8">
+                <input type="number" name="rating" class="form-control" id="rating" min="0" max="5" step="0.1"
+                  placeholder="4.5" required>
+              </div>
+            </div>
+            <div class="form-group form-row">
+              <label for="description" class="col-md-3 col-form-label">
+                餐廳簡介
+              </label>
+              <div class="col-md-8">
+                <textarea type="text" name="description" class="form-control" id="description"
+                  placeholder="簡單介紹，為什麼喜歡這家餐廳" cols="48" rows="3"></textarea>
+              </div>
+            </div>
+
+
+            <button class="btn btn-success" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

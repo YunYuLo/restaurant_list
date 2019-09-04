@@ -2,7 +2,9 @@ const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
 const port = 3000
+const bodyParser = require('body-parser')
 const restaurantList = require('./restaurant.json')
+
 
 //connect to database
 const mongoose = require('mongoose')
@@ -21,7 +23,7 @@ const RestaurantList = require('./models/restaurantList')
 //template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
-
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 //routes
@@ -37,9 +39,27 @@ app.get('/restaurants', (req, res) => {
   return res.redirect('/')
 })
 
+
 //post a new restaurant
+app.get('/restaurants/new', (req, res) => {
+  res.render('new')
+})
+
 app.post('/restaurants', (req, res) => {
-  return res.send('新增一家餐廳')
+  const restaurant = new RestaurantList({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    rating: req.body.rating,
+    description: req.body.description,
+  })
+  restaurant.save((err) => {
+    if (err) return console.log(err)
+    return res.redirect('/')
+  })
 })
 
 //show more details 
