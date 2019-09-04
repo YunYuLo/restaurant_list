@@ -27,7 +27,10 @@ app.use(express.static('public'))
 //routes
 // show all restaurant
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  RestaurantList.find((err, restaurantLists) => {
+    if (err) return console.log(err)
+    return res.render('index', { restaurants: restaurantLists })
+  })
 })
 
 app.get('/restaurants', (req, res) => {
@@ -46,12 +49,12 @@ app.get('/restaurants/:id', (req, res) => {
 })
 
 //show edit page
-app.get('/restaurants/:id', (req, res) => {
+app.get('/restaurants/:id/edit', (req, res) => {
   return res.send('顯示修改餐廳內容頁面')
 })
 
 //edit details of exist data
-app.post('/restaurants/:id', (req, res) => {
+app.post('/restaurants/:id/edit', (req, res) => {
   return res.send('修改餐廳資訊')
 })
 
