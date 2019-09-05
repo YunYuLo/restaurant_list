@@ -1,7 +1,7 @@
 # Restaurant List
  > 第一版：用express完成簡單的餐廳推薦系統
  
- > 第二版(9/5)：更新功能-連接MongDB，並引入CRUD功能
+ > 第二版(9/5)：更新功能-連接MongoDB，並引入CRUD功能
 
 ## Features
 - 使用者可以瀏覽全部所有餐廳
