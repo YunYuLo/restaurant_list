@@ -3,7 +3,7 @@ const app = express()
 const exphbs = require('express-handlebars')
 const port = 3000
 const bodyParser = require('body-parser')
-const restaurantList = require('./restaurant.json')
+const methodOverride = require('method-override')
 
 
 //connect to database
@@ -25,6 +25,7 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 //routes
 // show all restaurant
@@ -79,7 +80,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
 })
 
 //edit details of exist data
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id/edit', (req, res) => {
   RestaurantList.findById(req.params.id, (err, restaurant) => {
     if (err) return console.log(err)
     restaurant.name = req.body.name
@@ -98,7 +99,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 })
 
 //delete data
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id/delete', (req, res) => {
   RestaurantList.findById(req.params.id, (err, restaurant) => {
     restaurant.remove((err) => {
       return res.redirect('/')
