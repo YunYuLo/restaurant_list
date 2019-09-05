@@ -64,33 +64,59 @@ app.post('/restaurants', (req, res) => {
 
 //show more details 
 app.get('/restaurants/:id', (req, res) => {
-  const restaurant = restaurantList.results.find(restaurant => restaurant.id == req.params.id)
-  res.render('show', { restaurants: restaurant })
+  RestaurantList.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.log(err)
+    return res.render('show', { restaurants: restaurant })
+  })
 })
 
 //show edit page
 app.get('/restaurants/:id/edit', (req, res) => {
-  return res.send('顯示修改餐廳內容頁面')
+  RestaurantList.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.log(err)
+    return res.render('edit', { restaurants: restaurant })
+  })
 })
 
 //edit details of exist data
 app.post('/restaurants/:id/edit', (req, res) => {
-  return res.send('修改餐廳資訊')
+  RestaurantList.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.log(err)
+    restaurant.name = req.body.name
+    restaurant.name_en = req.body.name_en
+    restaurant.category = req.body.category
+    restaurant.image = req.body.image
+    restaurant.location = req.body.location
+    restaurant.phone = req.body.phone
+    restaurant.rating = req.body.rating
+    restaurant.description = req.body.description
+
+    restaurant.save((err) => {
+      return res.redirect(`/restaurants/${req.params.id}`)
+    })
+  })
 })
 
 //delete data
 app.post('/restaurants/:id/delete', (req, res) => {
-  return res.send('刪除一家餐廳')
+  RestaurantList.findById(req.params.id, (err, restaurant) => {
+    restaurant.remove((err) => {
+      return res.redirect('/')
+    })
+  })
 })
 
 //searching
-// app.get('/search', (req, res) => {
-//   const restaurant = restaurantList.results.filter(restaurant => {
-//     const regex = new RegExp(req.query.keyword, 'gi')
-//     return restaurant.name_en.match(regex) || restaurant.name.match(regex) || restaurant.category.match(regex)
-//   })
-//   res.render('index', { restaurants: restaurant, keyword: req.query.keyword })
-// })
+app.get('/search', (req, res) => {
+  RestaurantList.find((err, restaurantLists) => {
+    if (err) return console.log(err)
+    const restaurant = restaurantLists.filter(restaurant => {
+      const regex = new RegExp(req.query.keyword, 'gi')
+      return restaurant.name_en.match(regex) || restaurant.name.match(regex) || restaurant.category.match(regex)
+    })
+    return res.render('index', { restaurants: restaurant, keyword: req.query.keyword })
+  })
+})
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
