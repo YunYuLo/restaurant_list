@@ -13,10 +13,28 @@
           <a class="btn btn-primary d-inline-block ml-2" href="/restaurants/new">新增餐廳<i
               class="fas fa-plus ml-2"></i></a>
         </div>
-
       </form>
     </div>
   </div>
+  <div class="text-right mt-3">
+    <div class="btn-group">
+      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+        請選擇排序方式
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/search?keyword={{keyword}}&sortKey=rating&sortOrder=desc">餐廳評分：高 > 低</a>
+        <a class="dropdown-item" href="/search?keyword={{keyword}}&sortKey=rating&sortOrder=asc">餐廳評分：低 > 高</a>
+        <a class="dropdown-item" href="/search?keyword={{keyword}}&sortKey=name&sortOrder=asc">店名：Ａ > Z</a>
+        <a class="dropdown-item" href="/search?keyword={{keyword}}&sortKey=name&sortOrder=desc">店名：Ｚ > Ａ</a>
+        <a class="dropdown-item" href="/search?keyword={{keyword}}&sortKey=category&sortOrder=asc">類別</a>
+        <a class="dropdown-item" href="/search?keyword={{keyword}}&sortKey=location&sortOrder=desc">地區</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-3">
+
 </div>
 
 <!-- restaurant list -->
