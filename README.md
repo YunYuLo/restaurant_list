@@ -2,6 +2,8 @@
  > 第一版：用express完成簡單的餐廳推薦系統
  
  > 第二版(9/5)：更新功能-連接MongoDB，並引入CRUD功能
+ 
+ > 第三版(9/6)：增加排序以及刪除確認的功能
 
 ## Features
 - 使用者可以瀏覽全部所有餐廳
@@ -10,6 +12,7 @@
 - 使用者可以新增一家餐廳 (new)
 - 使用者可以刪除一家餐廳 (new)
 - 使用者可以修改一家餐廳的資訊(new)
+- 使用者可依評分、餐廳名字等關鍵字執行排序(new)
 
 ## Quick view
 
@@ -24,7 +27,7 @@
 - Express-handlebars
 - Mongoose
 
-### Installation
+### Installation.
 1. Clone 此專案至電腦
 
 ```
