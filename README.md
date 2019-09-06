@@ -27,7 +27,7 @@
 - Express-handlebars
 - Mongoose
 
-### Installation
+### Installation.
 1. Clone 此專案至電腦
 
 ```
