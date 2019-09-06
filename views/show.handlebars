@@ -5,10 +5,35 @@
     <div class="mx-auto px-5">
       <a class="btn btn-info px-3 mx-3" href="/">首頁</a>
       <a class="btn btn-info px-3 " href="/restaurants/{{restaurants._id}}/edit">Edit</a>
-      <form class="info" action="/restaurants/{{{restaurants.id}}}/delete?_method=DELETE" method="POST"
-        style="display: inline;">
-        <button type="submit" class="btn btn-danger px-3 mx-3">Delete</button>
-      </form>
+      <button type="button" class="btn btn-danger px-3 mx-3" data-toggle="modal"
+        data-target="#trigger-deleteItem-{{restaurants._id}}">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete attention -->
+<div class="modal fade" id="trigger-deleteItem-{{restaurants._id}}" tabindex="-1" role="dialog"
+  aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">執行刪除確認</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        請問您確定要刪除這間餐廳-{{restaurants.name}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <form action="/restaurants/{{restaurants._id}}/delete?_method=DELETE" method="POST" style="display: inline;">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

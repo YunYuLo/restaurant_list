@@ -40,16 +40,9 @@
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
-    <!--searching result no matches-->
-    {{#unless restaurants}}
-    <div class="col-12 col-md-10 mx-auto">
-      <img class="rounded mx-auto d-block mb-4 w-100"
-        src="https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/NoRecordFound.png"
-        alt="NoMatchImage" />
-    </div>
-    {{/unless}}
 
     <div class="col-md-10 col-12 mx-auto">
+
       <div class="card-columns">
         {{#each restaurants}}
 
@@ -59,11 +52,10 @@
             <div class="overlay">
               <a class="info" href="/restaurants/{{{this._id}}}">Detail</a>
               <a class="info" href="/restaurants/{{{this._id}}}/edit">Edit</a>
-
-              <form action="/restaurants/{{{this.id}}}/delete?_method=DELETE" method="POST" style="display: inline;">
-                <button type="submit" class="btn-sm btn-danger"><i class="far fa-trash-alt h3"></i></button>
-              </form>
-
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="
+                      #trigger-deleteItem-{{this._id}}" style="margin-bottom: 18.5%">
+                Delete
+              </button>
             </div>
           </div>
 
@@ -82,8 +74,46 @@
             </div>
         </div>
         </a>
+
+        <!-- Delete attention -->
+        <div class="modal fade" id="trigger-deleteItem-{{this._id}}" tabindex="-1" role="dialog"
+          aria-labelledby="deleteModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">執行刪除確認</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                請問您確定要刪除這間餐廳-{{this.name}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <form action="/restaurants/{{this._id}}/delete?_method=DELETE" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         {{/each}}
+
       </div>
+
     </div>
+
+    <!--searching result no matches-->
+    {{#unless restaurants}}
+    <div class="col-12 col-md-10 mx-auto">
+      <img class="rounded mx-auto d-block mb-4 w-100"
+        src="https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/NoRecordFound.png"
+        alt="NoMatchImage" />
+    </div>
+    {{/unless}}
+
   </div>
 </div>
