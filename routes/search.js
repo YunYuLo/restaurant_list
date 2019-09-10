@@ -10,7 +10,7 @@ router.get('/', authenticated, (req, res) => {
   const sortObject = {};
   sortObject[sortKey] = sortOrder;
 
-  RestaurantList.find()
+  RestaurantList.find({ userId: req.user._id })
     .sort(sortObject)
     .exec((err, restaurantLists) => {
       if (err) return console.log(err)
