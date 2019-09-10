@@ -24,7 +24,7 @@ app.use(session({
 
 //connect to database
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurantList', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/restaurantList', { useNewUrlParser: true, useCreateIndex: true })
 
 const db = mongoose.connection
 db.on('error', () => {
@@ -44,6 +44,7 @@ require('./config/passport')(passport)
 // 登入後可以取得使用者的資訊方便我們在 view 裡面直接使用
 app.use((req, res, next) => {
   res.locals.user = req.user
+  res.locals.isAuthenticated = req.isAuthenticated()
   next()
 })
 
