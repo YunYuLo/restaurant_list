@@ -31,6 +31,7 @@ app.use(methodOverride('_method'))
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurants'))
 app.use('/search', require('./routes/search'))
+app.use('/users', require('./routes/user'))
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
