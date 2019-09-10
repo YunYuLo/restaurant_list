@@ -1,14 +1,16 @@
 const express = require('express')
 const router = express.Router()
 const RestaurantList = require('../models/restaurantList')
+const { authenticated } = require('../config/auth')
+
 
 
 //post a new restaurant
-router.get('/new', (req, res) => {
+router.get('/new', authenticated, (req, res) => {
   res.render('new')
 })
 
-router.post('/', (req, res) => {
+router.post('/', authenticated, (req, res) => {
   const restaurant = new RestaurantList({
     name: req.body.name,
     name_en: req.body.name_en,
@@ -26,7 +28,7 @@ router.post('/', (req, res) => {
 })
 
 //show more details 
-router.get('/:id', (req, res) => {
+router.get('/:id', authenticated, (req, res) => {
   RestaurantList.findById(req.params.id, (err, restaurant) => {
     if (err) return console.log(err)
     return res.render('show', { restaurants: restaurant })
@@ -34,7 +36,7 @@ router.get('/:id', (req, res) => {
 })
 
 //show edit page
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', authenticated, (req, res) => {
   RestaurantList.findById(req.params.id, (err, restaurant) => {
     if (err) return console.log(err)
     return res.render('edit', { restaurants: restaurant })
@@ -42,7 +44,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 //edit details of exist data
-router.put('/:id/edit', (req, res) => {
+router.put('/:id/edit', authenticated, (req, res) => {
   RestaurantList.findById(req.params.id, (err, restaurant) => {
     if (err) return console.log(err)
     restaurant.name = req.body.name
@@ -61,7 +63,7 @@ router.put('/:id/edit', (req, res) => {
 })
 
 //delete data
-router.delete('/:id/delete', (req, res) => {
+router.delete('/:id/delete', authenticated, (req, res) => {
   RestaurantList.findById(req.params.id, (err, restaurant) => {
     restaurant.remove((err) => {
       return res.redirect('/')
