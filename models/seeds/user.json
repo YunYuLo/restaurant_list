@@ -1,0 +1,19 @@
+{
+  "results": [
+    {
+      "name": "vivi",
+      "email": "vivi@gmail.com",
+      "password": "123456"
+    },
+    {
+      "name": "lili",
+      "email": "lili@gmail.com",
+      "password": "123456"
+    },
+    {
+      "name": "kiki",
+      "email": "kiki@gmail.com",
+      "password": "123456"
+    }
+  ]
+}
