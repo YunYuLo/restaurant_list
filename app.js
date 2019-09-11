@@ -58,7 +58,6 @@ const RestaurantList = require('./models/restaurantList')
 //routes
 app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurants'))
-app.use('/search', require('./routes/search'))
 app.use('/users', require('./routes/user'))
 app.use('/auth', require('./routes/auth'))
 
