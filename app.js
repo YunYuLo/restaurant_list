@@ -1,6 +1,9 @@
 // 載入 express-handlebars, body-parser, method-override
 const express = require('express')
 const app = express()
+if (process.env.NODE_ENV !== 'production') {      // 判斷開發環境
+  require('dotenv').config()
+}
 const exphbs = require('express-handlebars')
 const port = 3000
 const bodyParser = require('body-parser')
@@ -57,6 +60,7 @@ app.use('/', require('./routes/home'))
 app.use('/restaurants', require('./routes/restaurants'))
 app.use('/search', require('./routes/search'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/auth'))
 
 app.listen(port, () => {
   console.log(`Express is listening on http://localhost:${port}`)
