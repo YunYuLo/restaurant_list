@@ -21,11 +21,11 @@
 
 ## Quick view
 
+![login page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/login.png)
+![register page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/register.png)
 ![main page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/main.png)
 ![show page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/show.png)
 ![new page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/new.png)
-![login page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/login.png)
-![register page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/register.png)
 ![editProfile page](https://raw.githubusercontent.com/YunYuLo/restaurant_list/master/public/img/editProfile.png)
 
 
