@@ -9,9 +9,10 @@ const port = 3000
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 
-// 載入 express-session 與 passport
+// 載入 express-session, passport, connect-flash
 const session = require('express-session')
 const passport = require('passport')
+const flash = require('connect-flash')
 
 // 使用 express-handlebars, body-parser, method-override, express session
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
@@ -24,6 +25,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
 }))
+app.use(flash())
 
 //connect to database
 const mongoose = require('mongoose')
@@ -48,6 +50,8 @@ require('./config/passport')(passport)
 app.use((req, res, next) => {
   res.locals.user = req.user
   res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
   next()
 })
 
